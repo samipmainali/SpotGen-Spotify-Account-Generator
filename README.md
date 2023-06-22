@@ -41,15 +41,29 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
 
 ## Setting up Zoho Mail and IMAP
 
-1. Create a Zoho Mail account if you don't have one already.
+1. Create a Zoho Mail account by visiting Zoho Mail and following the signup process.
 
-2. Enable IMAP in your Zoho Mail account. Check the Zoho Mail documentation for instructions on how to enable IMAP.
+2. Enable IMAP in your Zoho Mail account by going to Settings > Mail Accounts > IMAP Access and toggling the switch to enable IMAP.
 
 3. Create two folders named "Spotify" and "PasswordChanged" in the root directory of your Zoho Mail account.
 
-4. Create filters in Zoho Mail to automatically move Spotify confirmation emails and password change emails to the respective folders. Refer to the instructions provided earlier in this README for creating the filters.
+4. Create a filter in Zoho Mail to automatically move Spotify confirmation emails to the "Spotify" folder:
 
-5. Once the setup is complete, the application will be able to access the appropriate folders in your Zoho Mail account to perform email verification and password change operation
+ Go to Settings > Filters > New Filter.
+ Set the condition type to AND.
+ Set the condition to Header contains and enter "Confirm your account".
+ Set the condition to From email is and enter "no-reply@spotify.com".
+ Set the action to Move to folder and select the "Spotify" folder.
+
+5. Create another filter in Zoho Mail to automatically move password change emails to the "PasswordChanged" folder:
+
+ Go to Settings > Filters > New Filter.
+ Set the condition type to AND.
+ Set the condition to Header contains and enter "Password changed".
+ Set the condition to From email is and enter "no-reply@spotify.com".
+ Set the action to Move to folder and select the "PasswordChanged" folder.
+
+6. Once the setup is complete, the application will be able to access the appropriate folders in your Zoho Mail account to perform email verification and password change operation
 
 ## Contribution
 
