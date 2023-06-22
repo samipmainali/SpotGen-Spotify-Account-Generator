@@ -1,3 +1,5 @@
+![Capture](https://github.com/samipmainali/SpotGen-Spotify-Account-Generator/assets/32693847/864e00f4-e76e-4d99-8266-ca815f201ed0)
+
 # Spotify Account Generator/Verifier SpotGen
 
 The Spotgen is a C# console application that automates the process of signing up for Spotify, verifying the email, and changing the password.
