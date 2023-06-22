@@ -111,7 +111,7 @@ namespace Spotgen
             Console.Title = "Spotgen - Menu | By: Demon.#5513, pami#7674";
             Logo.Print();
             Prefix.Print("1", "This tool is meant to be opensource, free and avaible for anyone\n");
-            Prefix.Print("2", "Visit this tool's github page: https://github.com/samipmainali\n");
+            Prefix.Print("2", "Visit this tool's github page: https://github.com/samipmainali/SpotGen-Spotify-Account-Generator\n");
             Prefix.Print("3", "Main dev: Demon.\n");
             Prefix.Print("B", "Back\n\n");
             Prefix.Print(">", "");

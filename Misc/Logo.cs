@@ -24,7 +24,7 @@ namespace Spotgen
 };
             Console.WriteLine();
             Console.WriteWithGradient(log, Color.LawnGreen, Color.MediumSpringGreen, 6);
-            Console.WriteLine("                                              https://github.com/samipmainali/SpotGen", Color.MediumSpringGreen);
+            Console.WriteLine("                                              https://github.com/samipmainali/SpotGen-Spotify-Account-Generator", Color.MediumSpringGreen);
             Console.ForegroundColor = Color.White;
             Console.WriteLine();
             Console.WriteLine();
