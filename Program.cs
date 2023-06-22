@@ -102,7 +102,6 @@ namespace Spotgen
                     Settings();
                     break;
             }
-
         }
 
         static void About()
