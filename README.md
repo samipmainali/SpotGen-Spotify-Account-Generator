@@ -74,6 +74,10 @@ Contributions are welcome! If you find any bugs or have suggestions for improvem
 This project is licensed under the [MIT License](LICENSE).
 Feel free to copy the entire content and modify it as needed.
 
+## Important
+
+# For now i am working on getting the client token for the mobile device. Might take a while till then join the discord and dm for me the token. 
+
 ## Discord
 
 # https://discord.gg/QMUt3vrZXB
