@@ -89,7 +89,9 @@ namespace Spotgen
             Prefix.Print("5", "Zoho Mail Domain: " + Variables.zohoMailDomain + "\n");
             Prefix.Print("6", "Zoho Mail Domain: " + Variables.zohoMailImap + "\n");
             Prefix.Print("7", "Zoho Password: " + Variables.zohoPassword + "\n");
-            Prefix.Print("8", "Client Token: " + Variables.client_token + "\n");
+            Prefix.Print("8", "Zoho Password: " + Variables.isemailverified + "\n");
+            Prefix.Print("9", "Zoho Password: " + Variables.ispasswordchanged + "\n");
+            Prefix.Print("10", "Client Token: " + Variables.client_token + "\n");
             Prefix.Print("!", "Edit config.json!\n");
             Prefix.Print("B", "Back\n\n");
             Prefix.Print(">", "");

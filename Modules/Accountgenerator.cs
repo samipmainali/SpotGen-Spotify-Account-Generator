@@ -141,15 +141,21 @@ namespace Spotgen.Modules
                             string sender = "no-reply@spotify.com";
                             string receiver = email;
 
-                            AccountEmailVerify emailVerifier = new AccountEmailVerify(Variables.zohoMailUsername, Variables.zohoPassword, sender, receiver);
-                            Thread.Sleep(10000);
-                            emailVerifier.VerifyEmail();
-                            ChangePassword.PasswordChange(password, new_password);
+                            if(Variables.isemailverified.ToLower() == "y")
+                            {
+                                AccountEmailVerify emailVerifier = new AccountEmailVerify(Variables.zohoMailUsername, Variables.zohoPassword, sender, receiver);
+                                Thread.Sleep(10000);
+                                emailVerifier.VerifyEmail();
+                            }
+                            if(Variables.ispasswordchanged.ToLower() == "y")
+                            {
+                                ChangePassword.PasswordChange(password, new_password);
+                                result = "| " + email + ":" + new_password;
+                                break;
+                            }
 
-                            result = "| " + email + ":" + new_password; 
+                            result = "| " + email + ":" + password; 
                             break;
-
-
 
                         }
                         else

@@ -162,7 +162,7 @@ namespace Spotgen.Modules
 
                         if (ott_verify.StatusCode == HttpStatusCode.OK)
                         {
-                            string Change_password_csrf = req.Get("https://www.spotify.com/us/account/change-password/").ToString().Substring("\"csrfToken\":\"", "\"");
+                            string Change_password_csrf = req.Get("https://www.spotify.com/account/change-password/").ToString().Substring("\"csrfToken\":\"", "\"");
                             req.ClearAllHeaders();
                             req.AddHeader("Authority", "www.spotify.com");
                             req.AddHeader("Path", "/api/account-settings/v1/change-password");

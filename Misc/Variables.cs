@@ -49,6 +49,8 @@ namespace Spotgen
         public static string zohoPassword;
         public static string client_token;
         public static int totalfreeaccount;
+        public static string isemailverified;
+        public static string ispasswordchanged;
 
         //FOR SPOTIFY
 
