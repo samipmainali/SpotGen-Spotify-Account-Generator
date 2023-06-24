@@ -50,6 +50,9 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>8-YF3JlJZhYxonaxT.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Colorful.Console, Version=1.2.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Colorful.Console.1.2.15\lib\net461\Colorful.Console.dll</HintPath>
@@ -197,7 +200,6 @@
     <Compile Include="Misc\Save.cs" />
     <Compile Include="Misc\Variables.cs" />
     <Compile Include="Modules\Accountgenerator.cs" />
-    <Compile Include="Modules\ChangePassword.cs" />
     <Compile Include="Modules\EmailVerifiy.cs" />
     <Compile Include="Preparing\Combo.cs" />
     <Compile Include="Preparing\Proxy.cs" />
@@ -226,6 +228,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="8-YF3JlJZhYxonaxT.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
