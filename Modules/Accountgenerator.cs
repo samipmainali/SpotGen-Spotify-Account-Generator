@@ -143,12 +143,6 @@ namespace Spotgen.Modules
                             string sender = "no-reply@spotify.com";
                             string receiver = email;
 
-                            if(Variables.isemailverified.ToLower() == "y")
-                            {
-                                AccountEmailVerify emailVerifier = new AccountEmailVerify(Variables.zohoMailUsername, Variables.zohoPassword, sender, receiver);
-                                Thread.Sleep(10000);
-                                emailVerifier.VerifyEmail();
-                            }
                             if(Variables.ispasswordchanged.ToLower() == "y")
                             {
                                 while (true)
@@ -309,6 +303,11 @@ namespace Spotgen.Modules
                                     }
                                 }
                             }
+                            if (Variables.isemailverified.ToLower() == "y")
+                            {
+                                AccountEmailVerify emailVerifier = new AccountEmailVerify(Variables.zohoMailUsername, Variables.zohoPassword, sender, receiver);
+                                emailVerifier.VerifyEmail();
+                            }
 
                             result = "| " + email + ":" + password; 
                             break;
@@ -317,8 +316,6 @@ namespace Spotgen.Modules
                         else
                         {
                             Variables.Error++;
-                            break;
-                            
                         }
 
                     }
