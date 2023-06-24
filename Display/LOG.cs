@@ -11,7 +11,7 @@ namespace Spotgen.Display
         public static void Gen()
         {
 
-            while (Variables.Generated <= Variables.totalfreeaccount)
+            while (Variables.Total <= Variables.totalfreeaccount)
             {
                 Console.Title = string.Format("Spot - Generating | {0}/{1} | Generated: {2} - Invalid: {3} | Errors: {4} | CPM: {5}", new object[]
                 {
