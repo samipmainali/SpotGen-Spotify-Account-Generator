@@ -51,8 +51,8 @@ namespace Spotgen
                 Variables.zohoMailDomain = Config.res["Zoho_Mail_Domain"].ToString();
                 Variables.zohoMailImap = Config.res["Zoho_Mail_Imap"].ToString();
                 Variables.zohoPassword = Config.res["Zoho_Password"].ToString();
-                Variables.isemailverified = Config.res["Enable_Mail_Verifier"].ToString();
-                Variables.ispasswordchanged = Config.res["Enable_Password_Change"].ToString();
+                Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString();
+                Variables.Enable_Password_Change = Config.res["Enable_Password_Change"].ToString();
                 Variables.client_token = Config.res["Client_Token"].ToString();
             }
             catch

@@ -9,74 +9,48 @@ using System.Drawing;
 using Console = Colorful.Console;
 using Spotgen.Display;
 using Spotgen.Modules;
+using System.Runtime.InteropServices;
 
 namespace Spotgen
 {
     internal class Threading
     {
-        public static List<string> list_0 = new List<string>();
-        public static Dictionary<string, Func<string, string, string>> dictionary_0 = new Dictionary<string, Func<string, string, string>>();
-
-        public static void smethod_0()
-        {
-            Threading.dictionary_0["Gen"] = new Func<string, string, string>(Accountgenerator.Check);
-            Threading.list_0 = new List<string>(Threading.dictionary_0.Keys);
-        }
+        public static List<Thread> threads = new List<Thread>();
 
         public static void Start()
         {
             
             Config.Read();            
-            Task.Factory.StartNew(delegate ()
-            {
-                Display.Misc.CalculateCPM();
-            });
-            Class12 @object = new Class12();
+            Task.Factory.StartNew(delegate (){Display.Misc.CalculateCPM();});
             Console.Clear();
             Logo.Print();
             Task.Factory.StartNew(delegate () { LOG.Gen(); });
-            ThreadPool.SetMinThreads(int.Parse(Variables.Threads), int.Parse(Variables.Threads));
-            ParallelOptions parallelOptions = new ParallelOptions
+            for (int i = 0; i < int.Parse(Variables.Threads); i++)
             {
-                MaxDegreeOfParallelism = int.Parse(Variables.Threads)
-            };
-            Parallel.ForEach<string>(Combo.asd, parallelOptions, new Action<string>(@object.method_0));
+                Thread item = new Thread((ThreadStart)Accountgenerator.Check);
+                threads.Add(item);
+            }
+            foreach (var thread in threads)
+                thread.Start();
+            foreach (var thread in threads)
+                thread.Join();
+
+
+
             Console.Clear();
             Console.Title = $"Spot - Finished | Demon.#5513, pami#7674";
             Logo.Print();
             Thread.Sleep(-1);
         }
 
-    }
-
-    public sealed class Class12
-    {
-
-
-        internal void method_0(string string_0)
+        public static void stop()
         {
-            string text = "";
-            string text2 = "";
-            foreach (string key in Threading.list_0)
+            foreach (var thread in threads)
             {
-                string text3 = Threading.dictionary_0[key](text, text2);
-                if (text3.Contains("|"))
-                {
-                    Save.Hit(text3);
-                    Variables.Checked++;
-                    Variables.Cpm++;
-                    Variables.Generated++;
-                    Console.WriteLine("[+] ~ " + text3, Color.Green);
-                }
-                else if (text3.Contains("Invalid"))
-                {
-                    Variables.Checked++;
-                    Variables.Cpm++;
-                    Variables.Invalid++;
-                }
-
-                Variables.accounts.Remove(string_0);
+                thread.Suspend();
             }
         }
+
     }
+
 }
