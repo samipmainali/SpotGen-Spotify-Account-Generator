@@ -23,25 +23,5 @@ namespace Spotgen
             lock (resultLock)
                 File.AppendAllText($"Results\\{date30}\\" + $"{Variables.Name} Hits.txt", content + Environment.NewLine);
         }
-
-        public static void Twofa(string content)
-        {
-            if (!Directory.Exists($"Results\\{date30}"))
-            {
-                Directory.CreateDirectory($"Results\\{date30}");
-            }
-            lock (resultLock)
-                File.AppendAllText($"Results\\{date30}\\" + $"{Variables.Name} 2FAs.txt", content + Environment.NewLine);
-        }
-
-        public static void Free(string content)
-        {
-            if (!Directory.Exists($"Results\\{date30}"))
-            {
-                Directory.CreateDirectory($"Results\\{date30}");
-            }
-            lock (resultLock)
-                File.AppendAllText($"Results\\{date30}\\" + $"{Variables.Name} Free.txt", content + Environment.NewLine);
-        }
     }
 }

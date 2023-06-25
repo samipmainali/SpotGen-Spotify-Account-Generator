@@ -18,22 +18,20 @@ using System.Web.UI.WebControls;
 using static Spotgen.Spotify.AuthTokenProtobuf;
 using static Spotgen.Spotify.SignUpProtobuf;
 using Random = System.Random;
-
+using System.Drawing;
+using Console = Colorful.Console;
 namespace Spotgen.Modules
 {
     internal class Accountgenerator
     {
-        public static string Check(string array0, string array1)
+        public static void Check()
         {
             Thread.Sleep(300);
-            
-
-
-            string result = "";
             for (; ; )
             {
                 if (Variables.Generated >= Variables.totalfreeaccount)
-                {
+                {   
+                    Threading.stop();
                     break;
                 }
                 try
@@ -143,7 +141,7 @@ namespace Spotgen.Modules
                             string sender = "no-reply@spotify.com";
                             string receiver = email;
 
-                            if(Variables.ispasswordchanged.ToLower() == "y")
+                            if(Variables.Enable_Password_Change.ToLower() == "y")
                             {
                                 while (true)
                                 {
@@ -288,7 +286,11 @@ namespace Spotgen.Modules
                                                 var change_password_request = req.Put("https://www.spotify.com/api/account-settings/v1/change-password", change_password_paylaod, "application/json");
                                                 if (change_password_request.StatusCode == HttpStatusCode.OK)
                                                 {
-                                                    result = "| " + email + ":" + new_password;
+                                                    Save.Hit(email + ":" + new_password);
+                                                    Variables.Checked++;
+                                                    Variables.Cpm++;
+                                                    Variables.Generated++;
+                                                    Console.WriteLine("[+] ~ " + email + ":" + new_password, Color.Green);
                                                     break;
                                                 }
                                             }
@@ -303,15 +305,18 @@ namespace Spotgen.Modules
                                     }
                                 }
                             }
-                            if (Variables.isemailverified.ToLower() == "y")
+                            if (Variables.Enable_Email_Verify.ToLower() == "y")
                             {
                                 AccountEmailVerify emailVerifier = new AccountEmailVerify(Variables.zohoMailUsername, Variables.zohoPassword, sender, receiver);
                                 emailVerifier.VerifyEmail();
                             }
 
-                            result = "| " + email + ":" + password; 
+                            Save.Hit(email + ":" + password);
+                            Variables.Checked++;
+                            Variables.Cpm++;
+                            Variables.Generated++;
+                            Console.WriteLine("[+] ~ " + email + ":" + password, Color.Green);
                             break;
-
                         }
                         else
                         {
@@ -326,7 +331,6 @@ namespace Spotgen.Modules
                     Variables.Error++;
                 }
             }
-            return result;
         }
         public static void SetUtils(Leaf.xNet.HttpRequest req, bool usessl = true)
         {

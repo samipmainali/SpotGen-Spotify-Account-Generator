@@ -29,16 +29,23 @@ namespace Spotgen
             {
                 case '1':
                     Config.Read();
+                    if (Variables.totalfreeaccount == 0)
+                    {
+                        Console.Clear();
+                        Console.Title = $"Spotgen - Invalid Config! | By: Demon.#5513, pami#7674";
+                        Logo.Print();
+                        Prefix.Print("*", "Invalid config file detected.\n");
+                        Prefix.Print("!", "Please make sure that you configured it properly.\n");
+                        Thread.Sleep(4000);
+                        Main();
+                    }
                     Console.Clear();
-                    Console.Title = $"Spot - Setup | By: Demon.#5513, pami#7674";
+                    Console.Title = $"Spotgen - Setup | By: Demon.#5513, pami#7674";
                     Logo.Print();
                     Variables.Name = "Gen";
-                    Threading.smethod_0();
-                    Threading.list_0.Clear();
-                    Threading.list_0.Add("Gen");
                     Console.Clear();
                     Logo.Print();
-                    Console.Title = $"Spotgen - | Demon.#5513, pami#7674";
+                    Console.Title = $"Spotgen - Setup | By: Demon.#5513, pami#7674";
                     Combo.EmptyLoad();
                     if (Variables.ProxyType == "PROXYLESS")
                     {
@@ -89,8 +96,8 @@ namespace Spotgen
             Prefix.Print("5", "Zoho Mail Domain: " + Variables.zohoMailDomain + "\n");
             Prefix.Print("6", "Zoho Mail Domain: " + Variables.zohoMailImap + "\n");
             Prefix.Print("7", "Zoho Password: " + Variables.zohoPassword + "\n");
-            Prefix.Print("8", "Zoho Password: " + Variables.isemailverified + "\n");
-            Prefix.Print("9", "Zoho Password: " + Variables.ispasswordchanged + "\n");
+            Prefix.Print("8", "Enable Email Verify: " + Variables.Enable_Email_Verify + "\n");
+            Prefix.Print("9", "Enable Password Change: " + Variables.Enable_Password_Change + "\n");
             Prefix.Print("10", "Client Token: " + Variables.client_token + "\n");
             Prefix.Print("!", "Edit config.json!\n");
             Prefix.Print("B", "Back\n\n");
