@@ -171,7 +171,7 @@ namespace Spotgen.Modules
                 }
                 catch(Exception ex) 
                 {
-                    Console.WriteLine(ex.ToString());  
+                    
                     Variables.Error++;
                 }
                 

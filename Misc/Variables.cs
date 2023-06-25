@@ -23,10 +23,6 @@ namespace Spotgen
         public static string Type = "";
         public static string ElapedTime = "";
         public static string Version = "1.3";
-        public static string randomhex32;
-        public static string login_token;
-        public static string spotify_username;
-        public static string myguid;
 
 
         //CONFIG SHITS
