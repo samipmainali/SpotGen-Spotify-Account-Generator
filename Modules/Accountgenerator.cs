@@ -91,7 +91,7 @@ namespace Spotgen.Modules
                                 {
                                     Tag1 = new SignUpRequest.UserInfo.BlankVariant.BlankVariantTag1
                                     {
-                                        BlankTag1 = 42
+                                        BlankTag1 = 1
                                     },
                                     emptytag3 = Array.Empty<byte>(),
                                     emptyTag4 = Array.Empty<byte>()
@@ -106,8 +106,8 @@ namespace Spotgen.Modules
                             {
                                 ClientId = "bff58e9698f40080ec4f9ad97a2f21e0",
                                 Os = "iOS-ARM",
-                                Appversion = "8.8.44",
-                                Stringoffset = new List<uint> { 1, 2, 3 },
+                                Appversion = "8.8.48",
+                                Stringoffset = 1,
                                 RandomHex32 = randomhex32
                             },
                             Tag4 = new SignUpRequest.Client
@@ -125,15 +125,15 @@ namespace Spotgen.Modules
                         req.AddHeader("connection", "Keep-Alive");
                         req.AddHeader("host", "spclient.wg.spotify.com");
                         req.AddHeader("origin", "https://www.spotify.com");
-                        req.AddHeader("user-agent", "Spotify/8.8.44 iOS/16.0.2 (iPhone10,3)");
-                        req.AddHeader("spotify-app-version", "8.8.44.458");
+                        req.AddHeader("user-agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
+                        req.AddHeader("spotify-app-version", "8.8.48.499");
                         req.AddHeader("x-client-id", Xclientid);
                         req.AddHeader("client-token", Variables.client_token);
 
                         var genrequest = req.Post("https://spclient.wg.spotify.com/signup/public/v2/account/create", signupSerialized,
                             "application/x-protobuf");
                         var genrequest_byte = genrequest.ToBytes();
-                        if (genrequest.StatusCode == HttpStatusCode.OK && genrequest_byte.Length > 90)
+                        if (genrequest.StatusCode == HttpStatusCode.OK && genrequest_byte.Length == 94)
                         {
                             string login_token = ProtobufHelper.Deserialize<SignUpResponse>(genrequest_byte).usernameAndLogin.LoginToken;
                             string spotify_username = ProtobufHelper.Deserialize<SignUpResponse>(genrequest_byte).usernameAndLogin.Username;
@@ -154,7 +154,7 @@ namespace Spotgen.Modules
                                         },
                                         middleBody = new Loginv4_message.MiddleBody
                                         {
-                                            uints = new List<uint> { 1 },
+                                            uints = 1,
                                             subbody = new Loginv4_message.MiddleBody.Subbody
                                             {
                                                 bool1 = 1,
@@ -176,7 +176,7 @@ namespace Spotgen.Modules
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
                                     req.AddHeader("Accept", "*/*");
-                                    req.AddHeader("User-Agent", "Spotify/8.8.44 iOS/16.0.2 (iPhone10,3)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
                                     req.AddHeader("Content-Length", login4_request_serialized.Length.ToString());
                                     req.AddHeader("Cache-Control", "no-cache, no-store, max-age=0");
                                     req.AddHeader("Accept-Language", "en-AU,en;q=0.9");
@@ -210,7 +210,7 @@ namespace Spotgen.Modules
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
                                     req.AddHeader("Accept", "*/*");
-                                    req.AddHeader("User-Agent", "Spotify/8.8.44 iOS/16.0.2 (iPhone10,3)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
                                     req.AddHeader("Content-Length", login3_authtoken_serialized.Length.ToString());
                                     req.AddHeader("Cache-Control", "no-cache, no-store, max-age=0");
                                     req.AddHeader("Accept-Language", "en-AU,en;q=0.9");
@@ -222,7 +222,7 @@ namespace Spotgen.Modules
                                     string session_transfer_payload = "{\"url\":\"https://open.spotify.com\"}";
 
                                     req.AddHeader("Host", "spclient.wg.spotify.com");
-                                    req.AddHeader("Spotify-App-Version", "8.8.44.458");
+                                    req.AddHeader("Spotify-App-Version", "8.8.48.499");
                                     req.AddHeader("Accept", "*/*");
                                     req.AddHeader("Authorization", "Bearer " + authorization_code);
                                     req.AddHeader("App-Platform", "iOS");
@@ -231,7 +231,7 @@ namespace Spotgen.Modules
                                     req.AddHeader("Accept-Language", "en-GB, en;q=0.50");
                                     req.AddHeader("Content-Type", "application/json");
                                     req.AddHeader("Content-Length", session_transfer_payload.Length.ToString());
-                                    req.AddHeader("User-Agent", "Spotify/8.8.44.458 iOS/Version 16.0.2 (Build 20A380)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.48.499 iOS/Version 16.0.2 (Build 20A380)");
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
 

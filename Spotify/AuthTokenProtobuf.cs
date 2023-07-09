@@ -29,13 +29,13 @@ namespace Spotgen.Spotify
             public class MiddleBody
             {
                 [ProtoMember(1, IsPacked = true)]
-                public List<uint> uints { get; set; }
+                public int uints { get; set; }
 
                 [ProtoContract]
                 public class Subbody
                 {
                     [ProtoMember(1)]
-                    public ushort bool1 { get; set; }
+                    public int bool1 { get; set; }
 
                     [ProtoMember(2)]
                     public string callbackURL { get; set; }
@@ -44,7 +44,7 @@ namespace Spotgen.Spotify
                     public string creationID { get; set; }
 
                     [ProtoMember(4)]
-                    public ushort bool2 { get; set; }
+                    public int bool2 { get; set; }
                 }
 
                 [ProtoMember(2)]
