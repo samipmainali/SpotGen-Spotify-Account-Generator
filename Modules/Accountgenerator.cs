@@ -2,23 +2,17 @@
 using Google.Protobuf;
 using Leaf.xNet;
 using MlkPwgen;
-using ProtoBuf;
 using Spotgen.Spotify;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using static Spotgen.Spotify.AuthTokenProtobuf;
 using static Spotgen.Spotify.SignUpProtobuf;
 using Random = System.Random;
-using System.Drawing;
 using Console = Colorful.Console;
 namespace Spotgen.Modules
 {
@@ -62,7 +56,6 @@ namespace Spotgen.Modules
                         string myguid = guid.ToString();
                         string Xclientid = myguid.Replace("-", "");
                         string randomhex32 = PasswordGenerator.Generate(32, "0123456789abcdef");
-                        string randomhex32_client = PasswordGenerator.Generate(32, "0123456789abcdef");
                         var day = "0" + PasswordGenerator.Generate(1, "123456789");
                         var month = "0" + PasswordGenerator.Generate(1, "123456789");
                         var yeartwodigit = PasswordGenerator.Generate(2, "789");
@@ -106,7 +99,7 @@ namespace Spotgen.Modules
                             {
                                 ClientId = "bff58e9698f40080ec4f9ad97a2f21e0",
                                 Os = "iOS-ARM",
-                                Appversion = "8.8.48",
+                                Appversion = "8.8.54",
                                 Stringoffset = 1,
                                 RandomHex32 = randomhex32
                             },
@@ -118,20 +111,20 @@ namespace Spotgen.Modules
 
                         byte[] signupSerialized = ProtobufHelper.Serialize(signUpRequest);
 
-                        req.AddHeader("accept", "application/x-protobuf");
-                        req.AddHeader("accept-Encoding", "gzip");
-                        req.AddHeader("accept-Language", "en-US;q=0.5");
+                        req.AddHeader("accept", "application/protobuf");
+                        req.AddHeader("accept-Encoding", "gzip, deflate, br");
+                        req.AddHeader("accept-Language", "en-GB, en;q=0.50");
                         req.AddHeader("app-Platform", "iOS");
+                        req.AddHeader("Content_length", signupSerialized.Length.ToString());
                         req.AddHeader("connection", "Keep-Alive");
                         req.AddHeader("host", "spclient.wg.spotify.com");
                         req.AddHeader("origin", "https://www.spotify.com");
-                        req.AddHeader("user-agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
-                        req.AddHeader("spotify-app-version", "8.8.48.499");
+                        req.AddHeader("user-agent", "Spotify/8.8.54 iOS/16.0.2 (iPhone10,3)");
+                        req.AddHeader("spotify-app-version", "8.8.54.544");
                         req.AddHeader("x-client-id", Xclientid);
-                        req.AddHeader("client-token", Variables.client_token);
 
                         var genrequest = req.Post("https://spclient.wg.spotify.com/signup/public/v2/account/create", signupSerialized,
-                            "application/x-protobuf");
+                            "application/protobuf");
                         var genrequest_byte = genrequest.ToBytes();
                         if (genrequest.StatusCode == HttpStatusCode.OK && genrequest_byte.Length == 94)
                         {
@@ -149,7 +142,7 @@ namespace Spotgen.Modules
                                     {
                                         deviceInfo = new Loginv4_message.DeviceInfo
                                         {
-                                            XclientID = "58bd3c95768941ea9eb4350aaa033eb3",
+                                            XclientID = Xclientid,
                                             randomhex32 = randomhex32
                                         },
                                         middleBody = new Loginv4_message.MiddleBody
@@ -171,17 +164,17 @@ namespace Spotgen.Modules
 
                                     var login4_request_serialized = ProtobufHelper.Serialize(loginv4_Message);
 
-                                    req.AddHeader("Content-Type", "application/x-protobuf");
+                                    req.AddHeader("Content-Type", "application/protobuf");
                                     req.AddHeader("Accept-Encoding", "gzip, deflate, br");
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
                                     req.AddHeader("Accept", "*/*");
-                                    req.AddHeader("User-Agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.54 iOS/16.0.2 (iPhone10,3)");
                                     req.AddHeader("Content-Length", login4_request_serialized.Length.ToString());
                                     req.AddHeader("Cache-Control", "no-cache, no-store, max-age=0");
                                     req.AddHeader("Accept-Language", "en-AU,en;q=0.9");
 
-                                    var login4_response = req.Post("https://login5.spotify.com/v4/login", login4_request_serialized, "application/x-protobuf");
+                                    var login4_response = req.Post("https://login5.spotify.com/v4/login", login4_request_serialized, "application/protobuf");
 
                                     var login4_response_byte = login4_response.ToBytes();
 
@@ -191,7 +184,7 @@ namespace Spotgen.Modules
                                     {
                                         deviceInfo = new Login3_authtoken_request.DeviceInfo
                                         {
-                                            xclientID = "58bd3c95768941ea9eb4350aaa033eb3",
+                                            xclientID = Xclientid,
                                             randomhex = randomhex32
                                         },
                                         usernameAndPreauthtoken = new Login3_authtoken_request.UsernameAndPreauthtoken
@@ -205,24 +198,24 @@ namespace Spotgen.Modules
 
 
                                     req.AddHeader("Host", "login5.spotify.com");
-                                    req.AddHeader("Content-Type", "application/x-protobuf");
+                                    req.AddHeader("Content-Type", "application/protobuf");
                                     req.AddHeader("Accept-Encoding", "gzip, deflate, br");
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
                                     req.AddHeader("Accept", "*/*");
-                                    req.AddHeader("User-Agent", "Spotify/8.8.48 iOS/16.0.2 (iPhone10,3)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.54 iOS/16.0.2 (iPhone10,3)");
                                     req.AddHeader("Content-Length", login3_authtoken_serialized.Length.ToString());
                                     req.AddHeader("Cache-Control", "no-cache, no-store, max-age=0");
                                     req.AddHeader("Accept-Language", "en-AU,en;q=0.9");
 
-                                    var login3_authtoken_response = req.Post("https://login5.spotify.com/v3/login", login3_authtoken_serialized, "application/x-protobuf");
+                                    var login3_authtoken_response = req.Post("https://login5.spotify.com/v3/login", login3_authtoken_serialized, "application/protobuf");
 
                                     var authorization_code = ProtobufHelper.Deserialize<Login3_token_response>(login3_authtoken_response.ToBytes()).mainBody.authorization_code;
 
                                     string session_transfer_payload = "{\"url\":\"https://open.spotify.com\"}";
 
                                     req.AddHeader("Host", "spclient.wg.spotify.com");
-                                    req.AddHeader("Spotify-App-Version", "8.8.48.499");
+                                    req.AddHeader("Spotify-App-Version", "8.8.54.544");
                                     req.AddHeader("Accept", "*/*");
                                     req.AddHeader("Authorization", "Bearer " + authorization_code);
                                     req.AddHeader("App-Platform", "iOS");
@@ -231,7 +224,7 @@ namespace Spotgen.Modules
                                     req.AddHeader("Accept-Language", "en-GB, en;q=0.50");
                                     req.AddHeader("Content-Type", "application/json");
                                     req.AddHeader("Content-Length", session_transfer_payload.Length.ToString());
-                                    req.AddHeader("User-Agent", "Spotify/8.8.48.499 iOS/Version 16.0.2 (Build 20A380)");
+                                    req.AddHeader("User-Agent", "Spotify/8.8.54.544 iOS/Version 16.0.2 (Build 20A380)");
                                     req.AddHeader("Connection", "keep-alive");
                                     req.AddHeader("client-token", Variables.client_token);
 
