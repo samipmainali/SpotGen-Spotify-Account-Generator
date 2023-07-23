@@ -18,8 +18,8 @@ This application is provided for educational and testing purposes only. The use 
 
 - Zoho Mail account
 - IMAP enabled in Zoho Mail
-- Two folders named "Spotify" and "PasswordChanged" created in the root directory of your Zoho Mail account
-- Filters created in Zoho Mail to move Spotify confirmation emails to the "Spotify" folder and password change emails to the "PasswordChanged" folder
+- Two folders named "Spotify" and "PasswordChanged" created in the root directory of your Mail account
+- Filters created in Mail provider to move Spotify confirmation emails to the "Spotify" folder and password change emails to the "PasswordChanged" folder
 
 ## Usage
 
@@ -41,15 +41,15 @@ Once the account generation is complete, you can find the generated accounts in 
 
 Use the generated accounts responsibly and in accordance with Spotify's terms of service.
 
-## Setting up Zoho Mail and IMAP
+## Setting up Mail and IMAP
 
-1. Create a Zoho Mail account by visiting Zoho Mail and following the signup process.
+1. Create a Mail account by visiting any Mail provider and following the signup process.
 
-2. Enable IMAP in your Zoho Mail account by going to Settings > Mail Accounts > IMAP Access and toggling the switch to enable IMAP.
+2. Enable IMAP in your Mail account by going to Settings > Mail Accounts > IMAP Access and toggling the switch to enable IMAP(Setting might be different for different provider).
 
-3. Create two folders named "Spotify" and "PasswordChanged" in the root directory of your Zoho Mail account.
+3. Create two folders named "Spotify" and "PasswordChanged" in the root directory of your Mail account.
 
-4. Create a filter in Zoho Mail to automatically move Spotify confirmation emails to the "Spotify" folder:
+4. Create a filter in Mail to automatically move Spotify confirmation emails to the "Spotify" folder:
 
  Go to Settings > Filters > New Filter.
  Set the condition type to AND.
@@ -57,7 +57,7 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
  Set the condition to From email is and enter "no-reply@spotify.com".
  Set the action to Move to folder and select the "Spotify" folder.
 
-5. Create another filter in Zoho Mail to automatically move password change emails to the "PasswordChanged" folder:
+5. Create another filter in Mail to automatically move password change emails to the "PasswordChanged" folder:
 
  Go to Settings > Filters > New Filter.
  Set the condition type to AND.
@@ -65,7 +65,35 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
  Set the condition to From email is and enter "no-reply@spotify.com".
  Set the action to Move to folder and select the "PasswordChanged" folder.
 
-6. Once the setup is complete, the application will be able to access the appropriate folders in your Zoho Mail account to perform email verification and password change operation
+6. Once the setup is complete, the application will be able to access the appropriate folders in your Mail account to perform email verification and password change operation
+
+7.  Below are the instructions for the user to fill in the values in the configuration.JSON file with suitable information:
+
+"Threads": (Numeric value) Set the number of threads you want to use for generating accounts. This determines how many accounts will be created simultaneously. 
+
+"ProxyType": (string) Choose the type of proxy you want to use. Options are "proxyless","http","socks4" and "socks5".
+
+"Total_Account_to_be_generated": (Numeric value) Specify the total number of accounts you want to generate. If you only need one account, keep it as "1".
+
+"Mail_Username": (string) Enter a preferred username for the email account. This will be used as the part before the "@" symbol in the email address. Can be left blank of catch all is enabled in the domain.
+
+"Mail_Domain": (string) Choose the domain for your email address. You can either use a custom domain you own or a free domain service.
+
+"Mail_Imap": (string) Provide the IMAP server address for your chosen email domain. This is required for email verification.
+
+"Mail_Email": (string) The complete email address with the chosen username and domain. This will be used for account verification and communication.
+
+"Mail_Password": (string) Provide the password for the email account. This will be used for account verification and communication.
+
+"Custom_Password": (string) If you want to use a different password for the generated accounts, you can set it here. Otherwise, you can leave it the as it is.
+
+"Is_Domain_with_catchall": (string) Set this to "y" if your email domain supports catch-all emails. Otherwise, set it to "n".
+
+"Enable_Mail_Verifier": (string) If you want to verify the email accounts after generation, set this to "y". Otherwise, set it to "n".
+
+"Enable_Password_Change": (string) Set this to "y" if you want to enable password change after account generation. If not, set it to "n".
+
+"Client_Token": (string) This is token key used for the account generation process. If you dont know where to get it. Dm me for one.
 
 ## Contribution
 
