@@ -48,14 +48,17 @@ namespace Spotgen
             {
                 Config.res = JObject.Parse(Config.json);
                 Variables.Threads = Config.res["Threads"].ToString();
-                Variables.ProxyType = Config.res["ProxyType"].ToString();
+                Variables.ProxyType = Config.res["ProxyType"].ToString().ToUpper();
                 Variables.totalfreeaccount = (int)(Int64.Parse((Config.res["Total_Account_to_be_generated"].ToString())));
-                Variables.zohoMailUsername = Config.res["Zoho_Mail_Username"].ToString();
-                Variables.zohoMailDomain = Config.res["Zoho_Mail_Domain"].ToString();
-                Variables.zohoMailImap = Config.res["Zoho_Mail_Imap"].ToString();
-                Variables.zohoPassword = Config.res["Zoho_Password"].ToString();
-                Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString();
-                Variables.Enable_Password_Change = Config.res["Enable_Password_Change"].ToString();
+                Variables.MailUsername = Config.res["Mail_Username"].ToString();
+                Variables.MailDomain = Config.res["Mail_Domain"].ToString();
+                Variables.MailImap = Config.res["Mail_Imap"].ToString();
+                Variables.MailEmail = Config.res["Mail_Email"].ToString();
+                Variables.MailPassword = Config.res["Mail_Password"].ToString();
+                Variables.CustomPassword = Config.res["Custom_Password"].ToString();
+                Variables.ismailcatchall = Config.res["Is_Domain_with_catchall"].ToString().ToLower(); ;
+                Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString().ToLower(); ;
+                Variables.Enable_Password_Change = Config.res["Enable_Password_Change"].ToString().ToLower(); ;
                 Variables.client_token = Config.res["Client_Token"].ToString();
             }
             catch
@@ -89,20 +92,32 @@ namespace Spotgen
                     "0"
                 },
                 {
-                    "Zoho_Mail_Username",
+                    "Mail_Username",
                     "xxx"
                 },
                 {
-                    "Zoho_Mail_Domain",
+                    "Mail_Domain",
                     "xxx"
                 },
                 {
-                    "Zoho_Mail_Imap",
+                    "Mail_Imap",
                     "xxx"
                 },
                 {
-                    "Zoho_Password",
+                    "Mail_Email",
                     "xxx"
+                },
+                {
+                    "Mail_Password",
+                    "xxx"
+                },
+                {
+                    "Custom_Password",
+                    "xxx"
+                },
+                {
+                    "Is_Domain_with_catchall",
+                    "y or n"
                 },
                 {
                     "Enable_Mail_Verifier",
@@ -115,85 +130,6 @@ namespace Spotgen
                 {
                     "Client_Token",
                     "xxx"
-                }
-
-            }.ToString();
-        }
-
-        public static void Renew(int threads, string proxytype, int total_account, string username, string domain, string imap, string password, string verifier, string passchange, string client_token)
-        {
-            File.Delete("Configuration.json");
-            Config.json = Config.New(threads, proxytype, total_account, username, domain, imap, password, verifier, passchange, client_token);
-            File.WriteAllText("Configuration.json", Config.json);
-
-            try
-            {
-                Config.res = JObject.Parse(Config.json);
-                Variables.Threads = Config.res["Threads"].ToString();
-                Variables.ProxyType = Config.res["ProxyType"].ToString();
-                Variables.totalfreeaccount = (int)(Int64.Parse((Config.res["Total_Account_to_be_generated"].ToString())));
-                Variables.zohoMailUsername = Config.res["Zoho_Mail_Username"].ToString();
-                Variables.zohoMailDomain = Config.res["Zoho_Mail_Domain"].ToString();
-                Variables.zohoMailImap = Config.res["Zoho_Mail_Imap"].ToString();
-                Variables.zohoPassword = Config.res["Zoho_Password"].ToString();
-                Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString();
-                Variables.Enable_Password_Change = Config.res["Enable_Password_Change"].ToString();
-                Variables.client_token = Config.res["Client_Token"].ToString();
-            }
-            catch
-            {
-                if (File.Exists("Configuration.json"))
-                {
-                    File.Delete("Configuration.json");
-                }
-                Config.json = Config.New(threads, proxytype, total_account, username, domain, imap, password, verifier, passchange, client_token);
-                File.WriteAllText("Configuration.json", Config.json);
-            }
-
-        }
-        public static string New(int threads, string proxytype, int total_account, string username, string domain, string imap, string password, string verifier, string passchange, string client_token)
-        {
-            return new JObject
-            {
-                {
-                    "Threads",
-                    threads
-                },
-                {
-                    "ProxyType",
-                    proxytype
-                },
-                {
-                    "Total_Account_to_be_generated",
-                    total_account
-                },
-                {
-                    "Zoho_Mail_Username",
-                    username
-                },
-                {
-                    "Zoho_Mail_Domain",
-                    domain
-                },
-                {
-                    "Zoho_Mail_Imap",
-                    imap
-                },
-                {
-                    "Zoho_Password",
-                    password
-                },
-                {
-                    "Enable_Mail_Verifier",
-                    verifier
-                },
-                {
-                    "Enable_Password_Change",
-                    passchange
-                },
-                {
-                    "Client_Token",
-                    client_token
                 }
 
             }.ToString();

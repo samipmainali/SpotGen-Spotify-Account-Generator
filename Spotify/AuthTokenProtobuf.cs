@@ -140,8 +140,5 @@ namespace Spotgen.Spotify
             [ProtoMember(1)]
             public MainBody mainBody { get; set; }
         }
-
-
-
     }
 }

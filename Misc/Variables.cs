@@ -1,6 +1,7 @@
 ﻿ using Leaf.xNet;
 using Spotgen.Spotify;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Spotgen
 {
@@ -39,14 +40,17 @@ namespace Spotgen
 
         //FOR ZOHO MAIL
 
-        public static string zohoMailUsername;
-        public static string zohoMailDomain;
-        public static string zohoMailImap;
-        public static string zohoPassword;
+        public static string MailUsername;
+        public static string MailDomain;
+        public static string MailImap;
+        public static string MailPassword;
         public static string client_token;
         public static int totalfreeaccount;
         public static string Enable_Email_Verify;
         public static string Enable_Password_Change;
+        public static string ismailcatchall;
+        public static string MailEmail;
+        public static string CustomPassword;
 
         //FOR SPOTIFY
 

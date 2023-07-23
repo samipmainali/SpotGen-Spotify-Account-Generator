@@ -23,5 +23,15 @@ namespace Spotgen
             lock (resultLock)
                 File.AppendAllText($"Results\\{date30}\\" + $"{Variables.Name} Hits.txt", content + Environment.NewLine);
         }
+
+        public static void HitPnotchanged(string content)
+        {
+            if (!Directory.Exists($"Results\\{date30}"))
+            {
+                Directory.CreateDirectory($"Results\\{date30}");
+            }
+            lock (resultLock)
+                File.AppendAllText($"Results\\{date30}\\" + $"{Variables.Name} Couldnotchangepassword.txt", content + Environment.NewLine);
+        }
     }
 }

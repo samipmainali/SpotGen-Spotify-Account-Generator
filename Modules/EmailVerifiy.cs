@@ -13,18 +13,13 @@ namespace Spotgen.Modules
 {
     internal class AccountEmailVerify
     {
-        private string zohomailusername;
-        private string zohopassword;
         private string sender;
         private string receiver;
 
-        public AccountEmailVerify(string username, string password, string sender, string receiver)
+        public AccountEmailVerify(string sender, string receiver)
         {
-            zohomailusername = username;
-            zohopassword = password;
             this.sender = sender;
             this.receiver = receiver;
-
         }
 
         public void VerifyEmail()
@@ -38,8 +33,8 @@ namespace Spotgen.Modules
                     // Connect to the IMAP server
                     using (Imap imap = new Imap())
                     {
-                        imap.ConnectSSL(Variables.zohoMailImap);
-                        imap.Login(zohomailusername + "@" + Variables.zohoMailDomain, zohopassword);
+                        imap.ConnectSSL(Variables.MailImap);
+                        imap.Login(Variables.MailEmail,Variables.MailPassword);
 
                         // Specify the folder to search for the verification email
                         string folderName = "Spotify";

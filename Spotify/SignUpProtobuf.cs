@@ -1,6 +1,7 @@
 ﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
-
+using System.Web.UI.WebControls;
 
 namespace Spotgen.Spotify
 {
@@ -31,7 +32,7 @@ namespace Spotgen.Spotify
                 public string DOB { get; set; }
 
                 [ProtoMember(3)]
-                public int Gender { get; set; }
+                public uint Gender { get; set; }
 
                 [ProtoMember(4)]
                 public BlankVariant Tag4 { get; set; }
@@ -46,16 +47,27 @@ namespace Spotgen.Spotify
                     public BlankVariantTag1 Tag1 { get; set; }
 
                     [ProtoMember(3)]
-                    public byte[] emptytag3 { get; set; }
+                    public BlankVariantTag2 Tag2 { get; set; }
 
                     [ProtoMember(4)]
-                    public byte[] emptyTag4 { get; set; }
+                    public BlankVariantTag3 Tag3 { get; set; }
 
                     [ProtoContract]
                     public class BlankVariantTag1
                     {
                         [ProtoMember(1)]
-                        public int BlankTag1 { get; set; }
+                        public uint BlankTag1 { get; set; }
+                    }
+
+                    [ProtoContract]
+                    public class BlankVariantTag2
+                    {
+                    }
+
+                    [ProtoContract]
+                    public class BlankVariantTag3
+                    {
+                        
                     }
                 }
 
@@ -82,8 +94,8 @@ namespace Spotgen.Spotify
                 [ProtoMember(3)]
                 public string Appversion { get; set; }
 
-                [ProtoMember(4, IsPacked = true)]
-                public int Stringoffset { get; set; }
+                [ProtoMember(4)]
+                public uint Stringoffset { get; set; }
 
                 [ProtoMember(5)]
                 public string RandomHex32 { get; set; }
@@ -96,6 +108,7 @@ namespace Spotgen.Spotify
                 public string ClientMobile { get; set; }
             }
         }
+
         [ProtoContract]
         public class SignUpResponse
         {
