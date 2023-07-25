@@ -176,6 +176,10 @@ namespace Spotgen.Modules
                         }
                         else
                         {
+                            if(Variables.Show_Error == "y")
+                            {
+                                Console.WriteLine("The bytes length received is: "+genrequest_byte.Length);
+                            }
                             Variables.Error++;
                         }
                     }
