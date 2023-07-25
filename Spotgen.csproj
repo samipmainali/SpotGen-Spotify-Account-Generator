@@ -120,7 +120,6 @@
     <Compile Include="Misc\Variables.cs" />
     <Compile Include="Modules\Accountgenerator.cs" />
     <Compile Include="Modules\EmailVerifiy.cs" />
-    <Compile Include="Modules\PasswordReset.cs" />
     <Compile Include="Preparing\Combo.cs" />
     <Compile Include="Preparing\Proxy.cs" />
     <Compile Include="Preparing\Threading.cs" />
