@@ -69,6 +69,10 @@ namespace Spotgen.Modules
 
                             if (!emailFound)
                             {
+                                if(Variables.Show_Error == "y")
+                                {
+                                    Console.WriteLine("Email not found. Retrying in 10 seconds");
+                                }
                                 Thread.Sleep(10000);
                             }
                         }
