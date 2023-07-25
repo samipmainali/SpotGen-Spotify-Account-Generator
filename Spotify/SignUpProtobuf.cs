@@ -32,7 +32,7 @@ namespace Spotgen.Spotify
                 public string DOB { get; set; }
 
                 [ProtoMember(3)]
-                public uint Gender { get; set; }
+                public int Gender { get; set; }
 
                 [ProtoMember(4)]
                 public BlankVariant Tag4 { get; set; }
@@ -56,7 +56,7 @@ namespace Spotgen.Spotify
                     public class BlankVariantTag1
                     {
                         [ProtoMember(1)]
-                        public uint BlankTag1 { get; set; }
+                        public int BlankTag1 { get; set; }
                     }
 
                     [ProtoContract]
@@ -95,7 +95,7 @@ namespace Spotgen.Spotify
                 public string Appversion { get; set; }
 
                 [ProtoMember(4)]
-                public uint Stringoffset { get; set; }
+                public int Stringoffset { get; set; }
 
                 [ProtoMember(5)]
                 public string RandomHex32 { get; set; }
