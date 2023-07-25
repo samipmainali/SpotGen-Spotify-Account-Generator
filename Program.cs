@@ -100,6 +100,7 @@ namespace Spotgen
             Prefix.Print("9", "Custom Password: " + Variables.CustomPassword + "\n");
             Prefix.Print("10", "Is Mail With Catchall: " + Variables.ismailcatchall + "\n");
             Prefix.Print("11", "Enable Email Verify: " + Variables.Enable_Email_Verify + "\n");
+            Prefix.Print("12", "Show Error: " + Variables.Show_Error + "\n");
             Prefix.Print("13", "Client Token: " + Variables.client_token + "\n");
             Prefix.Print("!", "Edit config.json!\n");
             Prefix.Print("B", "Back\n\n");

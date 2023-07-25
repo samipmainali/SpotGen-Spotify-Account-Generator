@@ -51,6 +51,7 @@ namespace Spotgen
         public static string ismailcatchall;
         public static string MailEmail;
         public static string CustomPassword;
+        public static string Show_Error;
 
         //FOR SPOTIFY
 

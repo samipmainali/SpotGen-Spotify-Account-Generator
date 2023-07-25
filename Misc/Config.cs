@@ -58,6 +58,7 @@ namespace Spotgen
                 Variables.CustomPassword = Config.res["Custom_Password"].ToString();
                 Variables.ismailcatchall = Config.res["Is_Domain_with_catchall"].ToString().ToLower();
                 Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString().ToLower();
+                Variables.Show_Error = Config.res["Show_Error"].ToString().ToLower();
                 Variables.client_token = Config.res["Client_Token"].ToString();
             }
             catch
@@ -120,6 +121,10 @@ namespace Spotgen
                 },
                 {
                     "Enable_Mail_Verifier",
+                    "y or n"
+                },
+                {
+                    "Show_Error",
                     "y or n"
                 },
                 {

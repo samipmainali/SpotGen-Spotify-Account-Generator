@@ -182,6 +182,10 @@ namespace Spotgen.Modules
                 }
                 catch(Exception e)
                 {
+                    if(Variables.Show_Error == "y")
+                    { 
+                        Console.WriteLine(e.Message);
+                    }
                     Variables.Error++;
                 }
             }
