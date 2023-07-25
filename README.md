@@ -2,13 +2,12 @@
 
 # Spotify Account Generator/Verifier SpotGen
 
-The Spotgen is a C# console application that automates the process of signing up for Spotify, verifying the email, and changing the password.
+The Spotgen is a C# console application that automates the process of signing up for Spotify and verifying the email.
 
 ## Features
 
 - Automated signup for Spotify
 - Email verification
-- Password change functionality
 
 ## Disclaimer
 
@@ -18,8 +17,8 @@ This application is provided for educational and testing purposes only. The use 
 
 - Zoho Mail account
 - IMAP enabled in Zoho Mail
-- Two folders named "Spotify" and "PasswordChanged" created in the root directory of your Mail account
-- Filters created in Mail provider to move Spotify confirmation emails to the "Spotify" folder and password change emails to the "PasswordChanged" folder
+- Two folders named "Spotify" created in the root directory of your Mail account
+- Filters created in Mail provider to move Spotify confirmation emails to the "Spotify" folder
 
 ## Usage
 
@@ -47,7 +46,7 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
 
 2. Enable IMAP in your Mail account by going to Settings > Mail Accounts > IMAP Access and toggling the switch to enable IMAP(Setting might be different for different provider).
 
-3. Create two folders named "Spotify" and "PasswordChanged" in the root directory of your Mail account.
+3. Create folder named "Spotify" in the root directory of your Mail account.
 
 4. Create a filter in Mail to automatically move Spotify confirmation emails to the "Spotify" folder:
 
@@ -56,16 +55,8 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
  Set the condition to Header contains and enter "Confirm your account".
  Set the condition to From email is and enter "no-reply@spotify.com".
  Set the action to Move to folder and select the "Spotify" folder.
-
-5. Create another filter in Mail to automatically move password change emails to the "PasswordChanged" folder:
-
- Go to Settings > Filters > New Filter.
- Set the condition type to AND.
- Set the condition to Header contains and enter "Password changed".
- Set the condition to From email is and enter "no-reply@spotify.com".
- Set the action to Move to folder and select the "PasswordChanged" folder.
-
-6. Once the setup is complete, the application will be able to access the appropriate folders in your Mail account to perform email verification and password change operation
+ 
+6. Once the setup is complete, the application will be able to access the appropriate folders in your Mail account to perform email verification
 
 7.  Below are the instructions for the user to fill in the values in the configuration.JSON file with suitable information:
 
@@ -90,8 +81,6 @@ Use the generated accounts responsibly and in accordance with Spotify's terms of
 "Is_Domain_with_catchall": (string) Set this to "y" if your email domain supports catch-all emails. Otherwise, set it to "n".
 
 "Enable_Mail_Verifier": (string) If you want to verify the email accounts after generation, set this to "y". Otherwise, set it to "n".
-
-"Enable_Password_Change": (string) Set this to "y" if you want to enable password change after account generation. If not, set it to "n".
 
 "Client_Token": (string) This is token key used for the account generation process. If you dont know where to get it. Dm me for one.
 
