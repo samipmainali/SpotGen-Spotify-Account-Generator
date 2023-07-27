@@ -52,6 +52,7 @@ namespace Spotgen
         public static string MailEmail;
         public static string CustomPassword;
         public static string Show_Error;
+        public static string plusordotaddressing;
 
         //FOR SPOTIFY
 

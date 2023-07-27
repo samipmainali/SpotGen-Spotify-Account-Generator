@@ -12,6 +12,7 @@ using static Spotgen.Spotify.SignUpProtobuf;
 using Random = System.Random;
 using Console = Colorful.Console;
 using RandomNameGenerator;
+using System.Text;
 
 namespace Spotgen.Modules
 {
@@ -81,8 +82,27 @@ namespace Spotgen.Modules
                             email = accountHolderName + "@" + Variables.MailDomain;
                         }
                         else
-                        {
-                            email = Variables.MailUsername + "+" + accountHolderName + "@" + Variables.MailDomain;
+                        {   
+                            if(Variables.Enable_Email_Verify != "y")
+                            {
+                                email = accountHolderName + PasswordGenerator.Generate(10, "0123456789") + "@" + Variables.MailDomain;
+                            }
+                            else
+                            {
+                                if(Variables.plusordotaddressing == "+")
+                                {
+                                    email = Variables.MailUsername+ "+" + accountHolderName + PasswordGenerator.Generate(10, "0123456789") + "@" + Variables.MailDomain;
+                                }
+                                else if (Variables.plusordotaddressing == ".")
+                                {
+                                    email = Variables.MailUsername + "." + accountHolderName + PasswordGenerator.Generate(10, "0123456789") + "@" + Variables.MailDomain;
+                                }
+                                else
+                                {
+                                    email = Variables.MailUsername + "+" + accountHolderName + PasswordGenerator.Generate(10, "0123456789") + "@" + Variables.MailDomain;
+                                }
+                            }
+                            
                         }
                         string password;
                         if(Variables.CustomPassword.Length >= 8)
@@ -173,12 +193,20 @@ namespace Spotgen.Modules
                                 Variables.Generated++;
                                 Console.WriteLine("[+] ~ " + email + ":" + password, Color.Green);
                             }
+                            else
+                            {
+                                Save.Hit(email + ":" + password);
+                                Variables.Checked++;
+                                Variables.Cpm++;
+                                Variables.Generated++;
+                                Console.WriteLine("[+] ~ " + email + ":" + password, Color.Green);
+                            }
                         }
                         else
                         {
                             if(Variables.Show_Error == "y")
                             {
-                                Console.WriteLine("The bytes length received is: "+genrequest_byte.Length);
+                                Console.WriteLine(Encoding.UTF8.GetString(genrequest_byte, 0, genrequest_byte.Length));
                             }
                             Variables.Error++;
                         }
