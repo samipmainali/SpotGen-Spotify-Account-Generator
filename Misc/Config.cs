@@ -60,6 +60,8 @@ namespace Spotgen
                 Variables.Enable_Email_Verify = Config.res["Enable_Mail_Verifier"].ToString().ToLower();
                 Variables.Show_Error = Config.res["Show_Error"].ToString().ToLower();
                 Variables.plusordotaddressing = Config.res["+ or . addressing"].ToString();
+                Variables.islocalhost = Config.res["Is_Mail_Server_Localhost"].ToString().ToLower();
+                Variables.localhostport = Config.res["Localhost_Port"].ToString();
                 Variables.client_token = Config.res["Client_Token"].ToString();
             }
             catch
@@ -131,6 +133,14 @@ namespace Spotgen
                 {
                     "+ or . addressing",
                     "+ or ."
+                },
+                {
+                    "Is_Mail_Server_Localhost",
+                    "y or n"
+                },
+                {
+                    "Localhost_Port",
+                    "xxx"
                 },
                 {
                     "Client_Token",

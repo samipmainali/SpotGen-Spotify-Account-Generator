@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Limilabs.Client.IMAP;
 using Limilabs.Mail;
 using System.Net.Security;
+using System.Net;
 
 namespace Spotgen.Modules
 {
@@ -33,9 +34,21 @@ namespace Spotgen.Modules
                     // Connect to the IMAP server
                     using (Imap imap = new Imap())
                     {
-                        imap.ConnectSSL(Variables.MailImap);
-                        imap.Login(Variables.MailEmail,Variables.MailPassword);
+                        if(Variables.islocalhost == "y")
+                        {
+                            imap.ConnectSSL(Variables.MailImap, Int32.Parse(Variables.localhostport));
 
+                            // Disable SSL verification for the localhost connection
+                            ServicePointManager.ServerCertificateValidationCallback = (s, cert, chain, sslPolicyErrors) => true;
+
+                            imap.Login(Variables.MailEmail, Variables.MailPassword);
+                        }
+                        else
+                        {
+                            imap.ConnectSSL(Variables.MailImap);
+                            imap.Login(Variables.MailEmail, Variables.MailPassword);
+                        }
+                        
                         // Specify the folder to search for the verification email
                         string folderName = "Spotify";
 

@@ -102,7 +102,9 @@ namespace Spotgen
             Prefix.Print("11", "Enable Email Verify: " + Variables.Enable_Email_Verify + "\n");
             Prefix.Print("12", "Show Error: " + Variables.Show_Error + "\n");
             Prefix.Print("13", "+ or . Addressing: " + Variables.plusordotaddressing + "\n");
-            Prefix.Print("14", "Client Token: " + Variables.client_token + "\n");
+            Prefix.Print("14", "Is Mail Server Localhost: " + Variables.islocalhost + "\n");
+            Prefix.Print("15", "Localhost Port: " + Variables.localhostport + "\n");
+            Prefix.Print("16", "Client Token: " + Variables.client_token + "\n");
             Prefix.Print("!", "Edit config.json!\n");
             Prefix.Print("B", "Back\n\n");
             Prefix.Print(">", "");

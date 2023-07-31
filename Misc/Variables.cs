@@ -53,6 +53,8 @@ namespace Spotgen
         public static string CustomPassword;
         public static string Show_Error;
         public static string plusordotaddressing;
+        public static string islocalhost;
+        public static string localhostport;
 
         //FOR SPOTIFY
 
