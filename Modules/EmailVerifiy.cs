@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Limilabs.Client.IMAP;
 using Limilabs.Mail;
-using System.Net.Security;
 using System.Net;
 
 namespace Spotgen.Modules
@@ -165,7 +164,7 @@ namespace Spotgen.Modules
                         var getHeader = req.Get(verificationLink);
 
                         string header = getHeader.ToString();
-                        if (getHeader.StatusCode == HttpStatusCode.OK)
+                        if (getHeader.StatusCode == Leaf.xNet.HttpStatusCode.OK)
                         {
                             string token = header.Substring("\"query\":{\"t\":\"", "\"");
                             string payload = "{\"token\":\"" + token + "\"}";
